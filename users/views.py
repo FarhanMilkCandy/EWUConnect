@@ -1,4 +1,5 @@
 
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
@@ -13,7 +14,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect("/")
+            return HttpResponse("Login Success")
         else:
             messages.info(request,'invalid credentials')
             return redirect('login')

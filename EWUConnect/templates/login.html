@@ -9,7 +9,7 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <form action="login" method="post">
+    <form method="post">
         {% csrf_token %}
         <input type="text" name="username" placeholder="username"><br>
         <input type="password" name="password" placeholder="password"><br>
