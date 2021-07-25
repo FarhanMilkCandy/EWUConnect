@@ -13,7 +13,7 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect("/")
+            return HttpResponse("Login Success")
         else:
             messages.info(request,'invalid credentials')
             return redirect('login')
