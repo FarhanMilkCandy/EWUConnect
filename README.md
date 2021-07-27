@@ -1,2 +1,2 @@
 # EWUConnect
-Project For CSE412 Course
+Project For CSE412 Software Engineering Course
