@@ -1,5 +1,5 @@
 
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 # Create your views here.
@@ -19,7 +19,7 @@ def login(request):
             return redirect('login')
 
     else:
-        return render(request,'login.html')    
+        return render(request,'users/login.html')    
 
 def register(request):
 
@@ -50,7 +50,7 @@ def register(request):
         return redirect('/')
         
     else:
-        return render(request,'register.html')
+        return render(request,'users/Registration.html')
 
 
 

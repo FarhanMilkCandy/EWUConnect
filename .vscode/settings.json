@@ -1,0 +1,10 @@
+{
+    "[html]": {
+    "breadcrumbs.showBooleans": true,
+        "editor.suggest.insertMode": "replace"
+    },
+    "emmet.includeLanguages": {
+        "django-html": "html",
+},
+"html.format.contentUnformatted": "",
+}
