@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>LogIn</title>
+    <link rel="stylesheet" href='{% static 'bootstrap/css/bootstrap.min.css'%}'>
+    <link rel="stylesheet" href='{% static 'css/styles.min.css'%}'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed&amp;display=swap">
+    <link rel="stylesheet" href='{% static 'fonts/ionicons.min.css'%}'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href='assets/css/styles.min.css'>
+</head>
+
+<body
+    style="width: auto;height: 100vh;background: linear-gradient(white 0%, rgb(195,195,195) 100%), rgb(255, 255, 255);">
+    <div>
+        <nav class="navbar navbar-light navbar-expand-md d-xl-flex"
+            style="height: auto;width: auto;text-align: left;background: rgb(241,247,252);">
+            <div class="container-fluid">
+                <div class="d-xxl-flex align-items-xxl-center"><img src="{%static 'img/EWUConnect_Logo_Logo.png'%}"
+                        style="width: 80px;margin-left: 20px;"><a class="navbar-brand" href="#"
+                        style="font-family: 'Bebas Neue', serif;font-size: 30px;margin-top: 5px;color: #222222;margin-left: 5px;"><strong>EWUConnect</strong></a>
+                </div>
+                <div><a class="btn btn-lg" data-bss-disabled-mobile="true" data-bss-hover-animate="bounce"
+                        type="button"
+                        style="color: rgb(33,74,128);background: rgba(33,74,128,0);font-family: Roboto, sans-serif;font-size: 16px;width: 100px;height: 60px;border-radius: 0px;font-weight: bold;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;" href='{% url 'register' %}'>SignUp</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div style="height: auto;width: auto;">
+        <!-- Start: Login Form Clean -->
+        <section class="login-clean"
+            style="width: auto;height: auto;padding-bottom: 70px;padding-top: 70px;background: rgb(241, 247, 252);">
+            <form class="bounce animated" method="post" style="width: auto;height: auto;padding-top: 20px;">
+            {% csrf_token %}
+                <div data-bss-hover-animate="bounce" class="illustration"><i class="icon ion-android-lock"
+                        style="width: auto;color: #214a80;"></i></div>
+                <div class="mb-3"><input class="form-control" type="text" name="username" placeholder="Username"
+                        style="font-family: Roboto, sans-serif;background: rgba(247,249,252,0);"></div>
+                <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"
+                        style="font-family: Roboto, sans-serif;background: rgba(247,249,252,0);"></div>
+                <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit"
+                        style="background: #214a80;font-family: Roboto, sans-serif;">Log In</button></div><a
+                    class="forgot" href="#">Forgot your password?</a>
+            </form>
+        </section><!-- End: Login Form Clean -->
+        <div>
+            {% for message in messages %}
+            <h3> {{message}}  </h3>
+            {% endfor %}
+    </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/script.min.js"></script>
+</body>
+
+</html>
