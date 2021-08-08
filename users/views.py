@@ -1,25 +1,27 @@
-
-from django.shortcuts import redirect, render, HttpResponse
+from django.shortcuts import redirect, render
+from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 # Create your views here.
 
+
 def login(request):
-    if request.method== 'POST':
+    if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
 
-        user = auth.authenticate(username=username,password=password)
+        user = auth.authenticate(username=username, password=password)
 
         if user is not None:
             auth.login(request, user)
-            return HttpResponse("Login Success")
+            return render(request, 'home/home.html')
         else:
-            messages.info(request,'invalid credentials')
+            messages.info(request, 'invalid credentials')
             return redirect('login')
 
     else:
-        return render(request,'users/login.html')    
+        return render(request, 'users/login.html')
+
 
 def register(request):
 
@@ -31,29 +33,32 @@ def register(request):
         password2 = request.POST['password2']
         email = request.POST['email']
 
-        if password1==password2:
+        if password1 == password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request,'Username Taken')
+                messages.info(request, 'Username Taken')
                 return redirect('register')
             elif User.objects.filter(email=email).exists():
-                messages.info(request,'Email Taken')
+                messages.info(request, 'Email Taken')
                 return redirect('register')
-            else:   
-                user = User.objects.create_user(username=username, password=password1, email=email,first_name=first_name,last_name=last_name)
-                user.save();
+            else:
+                user = User.objects.create_user(
+                    username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
+                user.save()
                 print('user created')
                 return redirect('login')
 
         else:
-            messages.info(request,'password not matching..')    
+            messages.info(request, 'password not matching..')
             return redirect('register')
         return redirect('/')
-        
-    else:
-        return render(request,'users/Registration.html')
 
+    else:
+        return render(request, 'users/Registration.html')
 
 
 def logout(request):
     auth.logout(request)
-    return redirect('/')       
+    return redirect('login')
+
+def profile(request):
+    return render(request, 'users/Profile.html')

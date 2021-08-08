@@ -1,0 +1,127 @@
+{% extends 'users/base.html'%}
+{% load static %}
+
+{% block title %}
+Profile
+{% endblock title %}
+
+{% block content %}
+    <div class="row row-cols-1 align-items-center" style="width: 100%;">
+      <div class="col-12">
+        <div style="width: 100%; height: 100%;">
+          <!-- Start: EWU Connect Navbar with icons -->
+          <div style="margin-bottom: 0px; width: 100%; height: 90px;">
+            <!-- Start: EWU Connect Navbar -->
+            <div style="margin: 0px; margin-bottom: 0px; margin-top: 0px; margin-right: 0px;">
+              <nav class="navbar navbar-light fixed-top shadow-sm d-flex d-xl-flex justify-content-xxl-start" style="text-align: left; background: rgb(241, 247, 252);">
+                <div class="container-fluid">
+                  <div class="d-xxl-flex align-items-xxl-center" style="margin-right: 0px; width: 243;">
+                    <img src="assets/img/EWUConnect_Logo_Logo.png" style="width: 80px; margin-left: 20px;" />
+                    <a class="navbar-brand" style="font-family: 'Bebas Neue', serif; font-size: 30px; margin-top: 5px; color: #222222; margin-left: 5px;" href="untitled.html"><strong>EWUConnect</strong></a>
+                  </div>
+                  <div style="min-height: 20px; max-height: 35px; min-width: 100px; max-width: 425px; margin-left: 0px; margin-right: 0px; width: 100%; height: 40px;">
+                    <input
+                      class="border rounded-pill d-xxl-flex"
+                      type="text"
+                      style="background: #c9d7e8; border-style: none; padding: -2; padding-left: 20px; margin-left: 0; margin-right: 0px; height: 100%; width: 100%;"
+                      placeholder="Search"
+                    />
+                  </div>
+                  <div class="d-flex" style="padding-right: 0; margin: 0; margin-right: 40px; margin-left: 0px;">
+                    <div class="row">
+                      <div class="col" style="padding: 0px; padding-right: 12px; padding-left: 12px; border-style: none;">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="icon icon-tabler icon-tabler-messages"
+                          data-bss-hover-animate="rubberBand"
+                          style="font-size: 35px; color: #1c1d1d; border-style: none;"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10"></path>
+                          <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2"></path>
+                        </svg>
+                      </div>
+                      <div class="col" style="border-style: none;">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="1em"
+                          height="1em"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="icon icon-tabler icon-tabler-notification"
+                          data-bss-hover-animate="rubberBand"
+                          style="color: #1c1d1d; font-size: 35px;"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                          <path d="M10 6h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3"></path>
+                          <circle cx="17" cy="7" r="3"></circle>
+                        </svg>
+                      </div>
+                      <div class="col"><i class="far fa-user-circle" data-bss-hover-animate="rubberBand" style="color: #1c1d1d; font-size: 30px; margin-top: 3px;"></i></div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+            </div>
+            <!-- End: EWU Connect Navbar -->
+          </div>
+          <!-- End: EWU Connect Navbar with icons -->
+        </div>
+      </div>
+      <div class="col-12">
+        <div style="width: 100%; height: 100%; margin: 5px;">
+          <div style="margin: 5px; margin-right: 40%; margin-left: 40%;"><img class="rounded-circle" data-bss-hover-animate="pulse" src="assets/img/Screenshot%20(80).png" style="width: 250px; height: 250px;" /></div>
+          <div style="width: 100%; height: 100%; margin-right: 15%; margin-left: 15%;">
+            <div class="card" style="width: 70%; margin: 5px;">
+              <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                  <li class="nav-item"><a class="nav-link" href="#" style="font-family: Roboto, sans-serif;">Posts</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#" style="font-family: Roboto, sans-serif;">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#" style="font-family: Roboto, sans-serif;">Photos</a></li>
+                </ul>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title" style="font-family: Roboto, sans-serif;">Username</h4>
+                <h6 class="text-muted card-subtitle mb-2" style="font-family: Roboto, sans-serif;">First Name Last Name</h6>
+                <p class="card-text" style="font-family: Roboto, sans-serif;">Short description of user</p>
+                <button class="btn btn-success border rounded-pill" type="button" style="font-family: Roboto, sans-serif; width: 75px; height: 45px; margin: 5px;">Follow</button>
+                <button class="btn btn-primary border rounded-pill" type="button" style="font-family: Roboto, sans-serif; height: 45px; width: 95px; margin: 5px;">Message</button>
+                <button class="btn btn-dark border rounded-pill" type="button" style="font-family: Roboto, sans-serif; font-weight: bold; width: 50px; height: 45px; margin: 5px;">. . .</button>
+              </div>
+            </div>
+            <div class="card" style="width: 70%; margin: 5px;">
+              <div class="card-header"><h5 class="mb-0" style="font-family: Roboto, sans-serif;">Education &amp; Career</h5></div>
+              <div class="card-body" style="background: #dfe7f1;">
+                <ul class="text-capitalize text-start text-body" style="font-family: Roboto, sans-serif;">
+                  <li>Software Engineer at Moogle since 2021</li>
+                  <li>Intern from Gicrosoft from 2015-2016</li>
+                  <li>CSE from EWU</li>
+                  <li>HSE from ABC college, Dhaka</li>
+                </ul>
+              </div>
+              <button
+                class="btn btn-primary bg-primary border rounded-pill"
+                type="button"
+                style="width: 10%; height: 45px; margin: 0px; margin-top: 5px; margin-bottom: 5px; margin-right: 5px; margin-left: 20px; font-family: Roboto, sans-serif; background: rgb(120, 194, 173);"
+              >
+                Edit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock content %}
+

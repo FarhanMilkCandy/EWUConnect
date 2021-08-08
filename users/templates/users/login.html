@@ -1,25 +1,12 @@
-<!DOCTYPE html>
+{% extends 'users/base.html'%}
 {% load static %}
-<html lang="en">
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>LogIn</title>
-    <link rel="stylesheet" href='{% static 'bootstrap/css/bootstrap.min.css'%}'>
-    <link rel="stylesheet" href='{% static 'css/styles.min.css'%}'>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed&amp;display=swap">
-    <link rel="stylesheet" href='{% static 'fonts/ionicons.min.css'%}'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href='assets/css/styles.min.css'>
-</head>
+{% block title %}
+Login
+{% endblock title %}
 
-<body
-    style="width: auto;height: 100vh;background: linear-gradient(white 0%, rgb(195,195,195) 100%), rgb(255, 255, 255);">
-    <div>
+{% block content %}
+<div>
         <nav class="navbar navbar-light navbar-expand-md d-xl-flex"
             style="height: auto;width: auto;text-align: left;background: rgb(241,247,252);">
             <div class="container-fluid">
@@ -51,15 +38,11 @@
                     class="forgot" href="#">Forgot your password?</a>
             </form>
         </section><!-- End: Login Form Clean -->
-        <div>
+        <div class="d-xxl-flex" style="width: 320px; height: 100px; margin-left: 500px;">
             {% for message in messages %}
-            <h3> {{message}}  </h3>
+                <p class="p-md-3 bg-danger text-center text-white rounded-pill" style="margin-top:10px"> {{message}}  </p>
             {% endfor %}
     </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/script.min.js"></script>
-</body>
-
-</html>
+{% endblock content %}
+    
