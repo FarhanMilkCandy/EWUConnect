@@ -1,64 +1,88 @@
-from django.shortcuts import redirect, render
-from django.http import HttpResponse
-from django.contrib.auth.models import User, auth
-from django.contrib import messages
-# Create your views here.
+from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+
+from users.forms import LoginForm, RegistrationForm
+from users.models import ProfileModel, UserModel
 
 
-def login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+def login_view(request):
+    if request.POST:
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
 
-        user = auth.authenticate(username=username, password=password)
-
-        if user is not None:
-            auth.login(request, user)
-            return render(request, 'home/home.html')
-        else:
-            messages.info(request, 'invalid credentials')
-            return redirect('login')
-
-    else:
-        return render(request, 'users/login.html')
-
-
-def register(request):
-
-    if request.method == 'POST':
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        username = request.POST['username']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
-        email = request.POST['email']
-
-        if password1 == password2:
-            if User.objects.filter(username=username).exists():
-                messages.info(request, 'Username Taken')
-                return redirect('register')
-            elif User.objects.filter(email=email).exists():
-                messages.info(request, 'Email Taken')
-                return redirect('register')
+            if user and user.is_active:
+                login(request, user)
+                if request.GET.get('next'):
+                    return redirect(request.GET.get('next'))
+                return redirect('home')
             else:
-                user = User.objects.create_user(
-                    username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
-                user.save()
-                print('user created')
                 return redirect('login')
-
         else:
-            messages.info(request, 'password not matching..')
-            return redirect('register')
-        return redirect('/')
+            return render(request, 'users/login.html', {'form': form})
+    form = LoginForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'users/login.html', context)
 
-    else:
-        return render(request, 'users/Registration.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
 
 
-def logout(request):
-    auth.logout(request)
-    return redirect('login')
+def signup_view(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            email = form.cleaned_data.get('email')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(email=email, password=raw_password)
+            ProfileModel.objects.create(user=user)
+            # send_registration_mail(user)
+            return redirect('home')
+        else:
+            return render(request, 'users/Registration.html', {"form": form})
 
-def profile(request):
-    return render(request, 'users/Profile.html')
+    form = RegistrationForm()
+    context = {
+        "form": form
+    }
+    return render(request, 'users/Registration.html', context)
+
+
+@login_required(login_url='login')
+def profile_view(request, pk):
+    user = UserModel.objects.get(id=pk)
+    profile = ProfileModel.objects.get(user=user)
+    is_self = False
+    if user == request.user:
+        is_self = True
+    context = {
+        'profile': profile,
+        'is_self': is_self,
+    }
+    return render(request, 'users/profile.html', context)
+
+
+@login_required(login_url='login')
+def edit_profile_view(request):
+    return render(request, 'users/edit-profile.html')
+
+
+@login_required(login_url='login')
+def account_settings_view(request):
+    pass
+
+
+def about_view(request):
+    pass
+
+
+def contact_view(request):
+    pass
