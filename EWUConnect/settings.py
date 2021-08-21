@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "home",
     "users",
+    'posts',
     "EWUConnect",
     "widget_tweaks",
     'django.contrib.admin',

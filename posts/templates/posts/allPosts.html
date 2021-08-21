@@ -1,0 +1,17 @@
+{% extends "baseTemplate.html" %}
+
+{% block title %}
+    All Posts
+{% endblock  %}
+
+{% block content %}
+    <section>
+      <h2>My Posts</h>
+
+      <ul>
+        {% include "posts/includes/post.html" %}
+        {% include "posts/includes/post.html" %}
+        {% include "posts/includes/post.html" %}
+        {% include "posts/includes/post.html" %}
+    </section>
+{% endblock %}
