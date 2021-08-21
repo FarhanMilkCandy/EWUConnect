@@ -13,7 +13,6 @@ def login_view(request):
             email = request.POST['email']
             password = request.POST['password']
             user = authenticate(email=email, password=password)
-
             if user and user.is_active:
                 login(request, user)
                 if request.GET.get('next'):
@@ -32,7 +31,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')
+    return redirect('login')
 
 
 def signup_view(request):
