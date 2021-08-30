@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chat',
+    'channels',
 ]
 
 AUTH_USER_MODEL = 'users.UserModel'
@@ -58,7 +60,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'EWUConnect.urls'
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -78,6 +79,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'EWUConnect.wsgi.application'
+ASGI_APPLICATION = 'EWUConnect.asgi.application'
+#ASGI_APPLICATION = 'EWUConnect.routing.application'
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 
 
 # Database
