@@ -36,7 +36,11 @@ INSTALLED_APPS = [
     "EWUConnect",
 
     "widget_tweaks",
+<<<<<<< HEAD
+    "crispy_forms",
+=======
     'crispy_forms',
+>>>>>>> main
 
     'django.contrib.admin',
     'django.contrib.auth',
