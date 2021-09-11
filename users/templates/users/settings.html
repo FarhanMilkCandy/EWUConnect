@@ -91,28 +91,6 @@
                         {% endfor %}
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="card col-12">
-                        <form class="p-4 p-md-5 border rounded" method="post">
-                            {% csrf_token %}
-
-                            <h3 class="text-black mb-5 border-bottom pb-2">Edit Profile Information</h3>
-
-                            <div class="form-outline mb-3">
-                                {{profileForm.gender}}
-                                {{ profileForm | crispy }}
-                            </div>
-
-                            <div class="col-12">
-                                <button class="btn btn-block btn-primary btn-md" type="submit">Update
-                                    Profile Information
-                                </button>
-                            </div>
-                        </form>
-
-                    </div>
-
             </div>
 
         </div>
